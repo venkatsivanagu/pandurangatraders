@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Pandu Ranga Traders</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            body {
+                font-family: 'Times New Roman', Times, serif;
+                background: #fff;
+            }
+            .bill-container {
+                width: 750px;
+                margin: 20px auto;
+                border: 2px solid #0e225b;
+                border-radius: 8px;
+                padding: 0 0 20px 0;
+                background: #fff;
+                box-sizing: border-box;
+            }
+            .bill-header-top {
+                position: relative;
+                padding: 10px 20px 0 20px;
+                margin-bottom: 24px;
+            }
+            .bill-title-h1 {
+                text-align: center;
+                font-size: 2em;
+                color: #0e225b;
+                font-weight: bold;
+                margin: 0;
+                letter-spacing: 2px;
+            }
+            .bill-gst {
+                position: absolute;
+                right: 20px;
+                top: 36px;
+                font-size: 1em;
+                color: #0e225b;
+                font-weight: normal;
+            }
+            .bill-header-top-line {
+                position: absolute;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: 2px;
+                background: #0e225b;
+                margin: 12px 0 0 0;
+            }
+            .bill-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: stretch;
+                padding: 0 20px 0 20px;
+                position: relative;
+            }
+            .bill-header-left {
+                flex: 2;
+                font-size: 1em;
+                padding: 0 20px 0 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+            .bill-header-right {
+                flex: 1;
+                text-align: left;
+                font-size: 1em;
+                padding: 0 0 0 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+            }
+            .bill-header-divider {
+                position: absolute;
+                left: 66.5%;
+                top: -12px;
+                height: calc(100% + 12px);
+                width: 2px;
+                background: #0e225b;
+                z-index: 2;
+            }
+            .bill-header-bottom-line {
+                width: 100%;
+                height: 2px;
+                background: #0e225b;
+                margin: 0 auto 0 auto;
+            }
+            .trader-name {
+                font-family: 'Cooper Black', serif;
+                font-size: 1.5em;
+                font-weight: bold;
+                color: #0e225b;
+                text-align: center;
+                margin: 5px 0 0 0;
+                letter-spacing: 1px;
+            }
+            .trader-address {
+                text-align: center;
+                font-size: 1em;
+                margin-bottom: 5px;
+            }
+            .bill-info-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            .bill-info-table td {
+                padding: 4px 10px;
+                font-size: 1em;
+                vertical-align: middle;
+            }
+            .items-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 0;
+                position: relative;
+                z-index: 1;
+            }
+            .items-table th, .items-table td {
+                border: 1.5px solid #0e225b;
+                padding: 6px 4px;
+                text-align: center;
+                font-size: 1em;
+                background: transparent;
+            }
+            /* Add styles for table inputs */
+            .items-table input[type="text"],
+            .items-table input[type="number"] {
+                border: none;
+                background: transparent;
+                width: 100%;
+                outline: none;
+                padding: 0;
+                margin: 0;
+                font-family: inherit;
+                font-size: inherit;
+            }
+            .items-table input[type="text"]:focus,
+            .items-table input[type="number"]:focus {
+                background: transparent;
+            }
+            .items-table th {
+                background: #f0f4ff;
+                color: #0e225b;
+                font-weight: bold;
+            }
+            .srno-col { width: 40px; }
+            .desc-col { width: 320px; }
+            .qty-col { width: 60px; }
+            .rs-col { width: 90px; }
+            .ps-col { width: 50px; }
+            .footer-signature {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+                padding: 0 20px;
+            }
+            .footer-signature div {
+                width: 45%;
+                font-size: 1em;
+            }
+            input[type="text"], input[type="date"], input[type="number"] {
+                border: none;
+                border-bottom: 1.5px solid #0e225b;
+                background: transparent;
+                font-size: 1em;
+                width: 100%;
+                outline: none;
+                padding: 2px 4px;
+                box-sizing: border-box;
+            }
+            input[type="text"]:focus, input[type="date"]:focus, input[type="number"]:focus {
+                background: #f0f4ff;
+            }
+            .right {
+                text-align: right;
+            }
+            .watermark {
+                font-family: 'Cooper Black', serif;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 2.5em;
+                color: #0e225b;
+                opacity: 0.25;
+                font-weight: bold;
+                pointer-events: none;
+                white-space: nowrap;
+                z-index: 0;
+                letter-spacing: 2px;
+                user-select: none;
+                padding: 40px 60px;
+                border: 4px solid #0e225b;
+                border-radius: 50%;
+            }
+            .items-table-wrapper {
+                position: relative;
+                width: 100%;
+            }
+            @media print {
+                @page {
+                    size: A4;
+                    margin: 0;
+                }
+                body {
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 100vh;
+                }
+                .bill-container {
+                    box-shadow: none;
+                    margin: 0 auto;
+                }
+                .watermark {
+                    opacity: 0.3;
+                }
+                .print-button-container {
+                    display: none;
+                }
+                /* Remove date/time title */
+                .bill-header-right-row:nth-child(2) {
+                    display: none;
+                }
+                /* Ensure all elements print exactly as they appear */
+                * {
+                    -webkit-print-color-adjust: exact !important;
+                    print-color-adjust: exact !important;
+                }
+                /* Preserve all borders and colors */
+                .bill-header-top-line,
+                .bill-header-bottom-line,
+                .bill-header-divider,
+                .items-table th,
+                .items-table td {
+                    border-color: #0e225b !important;
+                }
+                .items-table th {
+                    background-color: #f0f4ff !important;
+                }
+            }
+            /* Style for label-input pairs in bill-header-right */
+            .bill-header-right-row {
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+                font-size: 1em;
+            }
+            .bill-header-right-row label {
+                min-width: 48px;
+                color: #0e225b;
+                font-weight: normal;
+                margin-right: 6px;
+            }
+            /* Add styles to remove increment/decrement arrows */
+            input[type="number"] {
+                -moz-appearance: textfield;
+            }
+            input[type="number"]::-webkit-outer-spin-button,
+            input[type="number"]::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+            /* Show increment/decrement only for quantity column */
+            input[name^="qty"] {
+                -moz-appearance: auto;
+            }
+            input[name^="qty"]::-webkit-outer-spin-button,
+            input[name^="qty"]::-webkit-inner-spin-button {
+                -webkit-appearance: auto;
+                margin: 0;
+            }
+            /* Add print button styles */
+            .print-button-container {
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                z-index: 1000;
+            }
+            .print-button {
+                background-color: #0e225b;
+                color: white;
+                border: none;
+                padding: 12px 30px;
+                font-size: 1.1em;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 6px rgba(14, 34, 91, 0.2);
+            }
+            .print-button:hover {
+                background-color: #1a3a8f;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 8px rgba(14, 34, 91, 0.3);
+            }
+            .print-button:active {
+                transform: translateY(0);
+                box-shadow: 0 2px 4px rgba(14, 34, 91, 0.2);
+            }
+        </style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <form class="bill-container">
+            <div class="bill-header-top">
+                <h1 class="bill-title-h1">BILL</h1>
+                <div class="bill-gst">GST IN : <span style="color:#0e225b;">37CQDPV7165G1ZB</span></div>
+                <div class="bill-header-top-line"></div>
+            </div>
+            <div class="bill-header">
+                <div class="bill-header-left">
+                    <div>Cell : <span style="color:#0e225b;">7981853525</span></div>
+                    <div>E-mail : <span style="color:#0e225b;">vamsi7654321@gmail.com</span></div>
+                    <div class="trader-name">PANDU RANGA TRADERS</div>
+                    <div class="trader-address">Near Autonagr, 4th Bridge Highway</div>
+                </div>
+                <div class="bill-header-right">
+                    <div class="bill-header-right-row">
+                        <label for="bill_no">No :</label>
+                        <input type="text" id="bill_no" name="bill_no" style="width:120px; border:none; border-bottom:1.5px solid #0e225b; background:transparent; outline:none; font-size:1em;">
+                    </div>
+                    <div class="bill-header-right-row">
+                        <label for="bill_date">Date :</label>
+                        <input type="date" id="bill_date" name="bill_date" style="width:120px; border:none; border-bottom:1.5px solid #0e225b; background:transparent; outline:none; font-size:1em;">
+                    </div>
+                </div>
+                <div class="bill-header-divider"></div>
+            </div>
+            <div class="bill-header-bottom-line"></div>
+            <table class="bill-info-table" style="width:100%;">
+                <tr>
+                    <td colspan="2" style="vertical-align:top;">
+                        To<br>
+                        Sri <input type="text" name="to_sri" style="width:90%; border:none; border-bottom:1.5px solid #0e225b; height:1.2em; background:transparent; outline:none; font-size:1em;">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="vertical-align:top;">
+                        Vehicle No : <input type="text" name="vehicle_no" style="width:35%; border:none; border-bottom:1.5px solid #0e225b; height:1.2em; background:transparent; outline:none; font-size:1em;">
+                        &nbsp;&nbsp;Ph : <input type="text" name="phone" style="width:35%; border:none; border-bottom:1.5px solid #0e225b; height:1.2em; background:transparent; outline:none; font-size:1em;">
+                    </td>
+                </tr>
+            </table>
+            <div class="items-table-wrapper">
+                <div class="watermark">PANDU RANGA TRADERS</div>
+                <table class="items-table">
+                    <tr>
+                        <th class="srno-col">Sr no :</th>
+                        <th class="desc-col">DESCRIPTION</th>
+                        <th class="qty-col">QTY</th>
+                        <th class="rs-col">AMOUNT<br>Rs</th>
+                        <th class="ps-col">Ps</th>
+                    </tr>
+                    <!-- 19 rows for items -->
+                    <script>
+                        for(let i=1;i<=19;i++){
+                            document.write('<tr>');
+                            document.write('<td><input type="text" name="srno'+i+'" style="width:30px;text-align:center;"></td>');
+                            document.write('<td><input type="text" name="desc'+i+'" style="width:98%;text-align:left;"></td>');
+                            document.write('<td><input type="number" name="qty'+i+'" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="width:50px;text-align:center;"></td>');
+                            document.write('<td><input type="number" name="rs'+i+'" class="rs-field" min="0" step="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="width:70px;text-align:right;"></td>');
+                            document.write('<td><input type="number" name="ps'+i+'" class="ps-field" min="0" max="99" maxlength="2" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="width:35px;text-align:right;"></td>');
+                            document.write('</tr>');
+                        }
+                    </script>
+                    <tr>
+                        <td colspan="2" style="font-weight:bold; text-align:center;">Total</td>
+                        <td></td>
+                        <td><input type="text" id="total_rs" readonly style="width:70px; text-align:right; border:none; background:transparent; font-weight:bold;"></td>
+                        <td><input type="text" id="total_ps" readonly style="width:35px; text-align:right; border:none; background:transparent; font-weight:bold;"></td>
+                    </tr>
+                </table>
+            </div>
+            <script>
+                function updateTotals() {
+                    let totalRs = 0;
+                    let totalPs = 0;
+                    document.querySelectorAll('.rs-field').forEach(input => {
+                        totalRs += Number(input.value) || 0;
+                    });
+                    document.querySelectorAll('.ps-field').forEach(input => {
+                        totalPs += Number(input.value) || 0;
+                    });
+                    // Convert paisa to rupees if over 99
+                    totalRs += Math.floor(totalPs / 100);
+                    totalPs = totalPs % 100;
+                    document.getElementById('total_rs').value = totalRs;
+                    document.getElementById('total_ps').value = totalPs;
+                }
+
+                // Add input validation for all number fields
+                document.querySelectorAll('input[type="number"]').forEach(input => {
+                    input.addEventListener('input', function(e) {
+                        // Remove any non-numeric characters
+                        this.value = this.value.replace(/[^0-9]/g, '');
+                        
+                        // For paise field, ensure it doesn't exceed 99 and is only 2 digits
+                        if (this.classList.contains('ps-field')) {
+                            if (this.value.length > 2) {
+                                this.value = this.value.slice(0, 2);
+                            }
+                            if (this.value > 99) {
+                                this.value = 99;
+                            }
+                        }
+                        
+                        updateTotals();
+                    });
+                    
+                    // Prevent paste of non-numeric content
+                    input.addEventListener('paste', function(e) {
+                        e.preventDefault();
+                        const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+                        const numericOnly = pastedText.replace(/[^0-9]/g, '');
+                        if (numericOnly) {
+                            if (this.classList.contains('ps-field')) {
+                                // For paise, only take first 2 digits
+                                this.value = numericOnly.slice(0, 2);
+                                if (this.value > 99) {
+                                    this.value = 99;
+                                }
+                            } else {
+                                this.value = numericOnly;
+                            }
+                            updateTotals();
+                        }
+                    });
+                });
+            </script>
+            <div class="footer-signature">
+                <div>
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span style="white-space:nowrap;">Receiver's Signature :</span>
+                        <span style="flex:1; display:inline-block; border-bottom:1.5px solid #0e225b; min-width:180px; height:1.2em; vertical-align:bottom;"></span>
+                    </div>
+                    <div style="margin-top:15px; display:flex; align-items:center; gap:8px;">
+                        <span style="white-space:nowrap;">Name :</span>
+                        <span style="flex:1; display:inline-block; border-bottom:1.5px solid #0e225b; min-width:273px; height:1.2em; vertical-align:bottom;"></span>
+                    </div>
+                </div>
+                <div class="right">
+                    For <span class="trader-name" style="font-size:1em;display:inline;">PANDU RANGA TRADERS</span><br><br>
+                    Signature : <input type="text" name="trader_sign" style="width:180px;display:inline-block;">
+                </div>
+            </div>
+        </form>
+        <div class="print-button-container">
+            <button class="print-button" onclick="window.print()">
+                <i class="fas fa-print"></i> Print Bill
+            </button>
+        </div>
+        <!-- Add Font Awesome for the print icon -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <script src="" async defer></script>
+    </body>
+</html>
