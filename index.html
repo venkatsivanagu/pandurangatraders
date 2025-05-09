@@ -515,7 +515,7 @@
                     <tr class="total-row">
                         <td colspan="5" style="font-weight:bold; text-align:center;">Total</td>
                         <td><input type="text" id="total_rs" readonly style="width:70px; text-align:right; border:none; background:transparent; font-weight:bold;"></td>
-                        <td><input type="text" id="total_ps" readonly style="width:35px; text-align:right; border:none; background:transparent; font-weight:bold;"></td>
+                        <td><input type="text" id="total_ps" value="00" readonly style="width:35px; text-align:right; border:none; background:transparent; font-weight:bold;"></td>
                     </tr>
                 </table>
                 <button type="button" class="add-row-button" id="addRowBtn">
@@ -525,12 +525,12 @@
             <script>
                 function updateTotals() {
                     let totalRs = 0;
-                    let totalPs = 00;
+                    let totalPs = 0;
                     document.querySelectorAll('.rs-field').forEach(input => {
                         totalRs += Number(input.value) || 0;
                     });
                     document.querySelectorAll('.ps-field').forEach(input => {
-                        totalPs += Number(input.value) || 00;
+                        totalPs += Number(input.value) || 0;
                     });
                     // Convert paisa to rupees if over 99
                     totalRs += Math.floor(totalPs / 100);
