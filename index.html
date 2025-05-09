@@ -525,12 +525,12 @@
             <script>
                 function updateTotals() {
                     let totalRs = 0;
-                    let totalPs = 0;
+                    let totalPs = 00;
                     document.querySelectorAll('.rs-field').forEach(input => {
                         totalRs += Number(input.value) || 0;
                     });
                     document.querySelectorAll('.ps-field').forEach(input => {
-                        totalPs += Number(input.value) || 0;
+                        totalPs += Number(input.value) || 00;
                     });
                     // Convert paisa to rupees if over 99
                     totalRs += Math.floor(totalPs / 100);
