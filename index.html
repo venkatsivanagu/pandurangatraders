@@ -536,7 +536,7 @@
                     totalRs += Math.floor(totalPs / 100);
                     totalPs = totalPs % 100;
                     document.getElementById('total_rs').value = totalRs;
-                    document.getElementById('total_ps').value = totalPs;
+                    document.getElementById('total_ps').value = totalPs.toString().padStart(2, '0');
                 }
 
                 // Add input validation for all number fields
